@@ -19,17 +19,25 @@ export class BasicReportsController {
 
   }
 
-  @Get('employment-letter/:id')
+  @Get('empleado/:id')
   async employmentLetter(
     @Res() res:Response,
     @Param('id', ParseIntPipe) id:number
   ){
-
-    
     const pdfDoc = await this.basicReportsService.employmentLetter(id);
-
     res.setHeader('Content-Type', 'application/pdf');
     pdfDoc.info.Title = 'employment-Letter'
+    pdfDoc.pipe(res)
+    pdfDoc.end()
+  }
+
+  @Get('paises')
+  async GetCountriesReport(
+    @Res() res:Response,
+  ){
+    const pdfDoc = await this.basicReportsService.getCountries();
+    res.setHeader('Content-Type', 'application/pdf');
+    pdfDoc.info.Title = 'Countries-Report'
     pdfDoc.pipe(res)
     pdfDoc.end()
   }
