@@ -1,14 +1,15 @@
-import { Content } from "pdfmake/interfaces";
-interface Page {
-    currentPage:number,
-    PageCount:number,
-    title?:string
-}
+import { Content, ContextPageSize } from 'pdfmake/interfaces';
 
-export const footerSection=(page:Page):Content=>{
-    const {PageCount,currentPage, title} = page
-    return [
-        { text: `${title}`, alignment: 'center' },
-        { text:`Página ${currentPage.toString()} de ${PageCount}`, alignment: 'right', margin: [20, 20, 20, 20] },
-    ]
-}
+export const footerSection = (
+  currentPage: number,
+  pageCount: number,
+  pageSize: ContextPageSize,
+): Content => {
+  return {
+    text: `Página ${currentPage} de ${pageCount}`,
+    alignment: 'right',
+    fontSize: 12,
+    bold: true,
+    margin: [0, 10, 35, 0],
+  };
+};

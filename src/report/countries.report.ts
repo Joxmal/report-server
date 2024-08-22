@@ -84,11 +84,6 @@ export const getCountryReport = ({
         }
       }
     ],
-    footer: (CP, PC) =>
-      footerSection({
-        currentPage: CP,
-        PageCount: PC,
-        title: 'Esto es una lista de Paises desde una base de datos a PDF',
-      }),
+    footer:footerSection,
   };
 };
