@@ -12,14 +12,14 @@ interface Countries {
 }
 
 const formatCountryData = (country: Countries): TableCell[] => {
-  const { id, iso2, iso3, name, continent, local_name } = country;
+  const { id, iso2, iso3, name, local_name, continent } = country;
   return [
     id.toString(),
     iso2,
     iso3,
     { text: name || 'X', bold: true },
-    continent || 'X',
     local_name || 'X',
+    continent || 'X',
   ];
 };
 
